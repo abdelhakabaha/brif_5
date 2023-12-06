@@ -9,12 +9,12 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css"></head>
 </head>
-<body>
-<nav class="bg-primary d-flex justify-content-between p-3 ">
+<body class="bg-dark">
+<nav class="bg-success d-flex justify-content-between p-3 ">
   <div class="d-flex mx-4 mt-1 text-light">
-    <h5>Welcom! in electrolherba</h5>
+    <h5>Welcom! in electronacer
+    </h5>
   </div>
   <div class="mx-4 d-flex">
     <a href="index.php" class="btn border-white border-1 text-light">LOG out</a>
@@ -27,19 +27,11 @@
     <div class="d-flex justify-content-center mt-3 mb-4"><h4 class="text-light">Electro Naccer</h4></div>
 
    
+
+
    <?php 
-    $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "Electro_naccer";
 
-    $connection = new mysqli($hostname, $username, $password, $database);
-
-    if (!$connection) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-   
+   include ('conixion.php');
     $result = $connection->query("SELECT * FROM products");
     $category_list =  $connection->query("SELECT * FROM Category");
    
@@ -99,7 +91,6 @@ if (isset($_POST["end-soon-products"])) {
 
 
 
-  
     
 <?php
     function display_products($result)
@@ -111,7 +102,7 @@ if (isset($_POST["end-soon-products"])) {
             $label = $product['Product_name'];
             $unitPrice = $product['prix_unitair'];
 
-            // Apply spacing and styling to each card
+            // Appliquez l’espacement et le style à chaque carte
             echo '<div class="col-lg-3 col-md-4 col-sm-6 mb-3">';
             echo '<div class="card p-3 h-100">';
             echo '<img src="' . $imagePath . '" class="card-img-top h-75" alt="Product Image">';
@@ -124,6 +115,9 @@ if (isset($_POST["end-soon-products"])) {
         echo '</div>';
     }
     ?>
+
+
+
      <footer class="no-print bg-dark text-light">
         <div class="card mt-5 mb-4"></div>  
         <div class=" container tol MMM">

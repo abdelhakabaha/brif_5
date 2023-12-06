@@ -10,14 +10,14 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css"></head>
-<body >
+    </head>
+<body class="bg-dark">
   
   
 <nav class="bg-primary d-flex justify-content-between p-3 ">
   <div class="d-flex mx-4 mt-1 ">
     
-    <h5>Welcom! in electrolherba</h5>
+    <h5>Welcom! in electronacer</h5>
   </div>
   <div class="mx-4">
     
@@ -26,6 +26,8 @@
   </div>
 
  </nav>
+
+
  <div >
   <div style="margin-left: 23%;" class="bg-primary  p-2 w-50 d-flex justify-content-center text-white fs-3 ">Log in to your acount</div>
   <form  method="POST" style="margin-left:23% ;" class="w-50  bg-light p-4">
@@ -43,33 +45,16 @@
   </form>
 
  </div >
- <div style="margin-left: 23%; border: 2px blue solid;" class="bg-dark w-50 mt-3 p-4">
-  <h4 class="text-white mx-5 my-4"> Disclaimer for the EVC</h4>
-  <p class="w-75 mx-4 text-white">Please note that :
 
-    - The data on your electronic application form <br>can no longer be changed once the application has <br> been submitted. These same details are used to make <br> the appointment at the CEV.
-    
-    - When you submit in person your application to the CEV, <br> the following data will be checked: the application <br> number on the form (VOWINTxxxxxxx), the passport number and the name <br> of the applicant. If there are any inconsistencies,<br> you will be refused access.
-    
-    - Please fill in your details correctly on the Visa <br> On Web application form. Only the form used to make an appointment will be accepted!</p>
- </div>
+
  <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "Electro_naccer";
-
-$connection = new mysqli($hostname, $username, $password, $database);
-
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+   include ('conixion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if userId and password are set and not null 
     if (isset($_POST['userid'], $_POST['password'])) {
-        $userId = $_POST['userid']; //stocker le input en variable pour utilise
-        $password = $_POST['password'];//stocker le input en variable pour utilise
+        $userId = $_POST['userid']; //stocker l'input en variable pour utilise
+        $password = $_POST['password'];//stocker l'input en variable pour utilise
 
         // Prepare a SQL statement using a prepared statement to prevent SQL injection
         $stmt = $connection->prepare("SELECT * FROM User WHERE UserId = ? AND Passwords = ?");
@@ -93,6 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the MySQL connection
 $connection->close();
 ?>
+
+
 
 
 
